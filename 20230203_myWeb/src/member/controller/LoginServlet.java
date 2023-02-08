@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import first.common.JDBCTemplate;
+import member.model.service.MemberService;
 
 /**
  * Servlet implementation class LoginServlet
@@ -53,7 +54,13 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("loginurl - doPost");
 		String id = request.getParameter("n1");
 		String pw = request.getParameter("n2");
-		int result =1;
+		
+		MemberService ms = new MemberService();
+		
+		int result = ms.login(id, pw);
+		
+		System.out.println(result);
+		
 		if(result ==1) {
 			response.sendRedirect(request.getContextPath() + "/");
 			System.out.println(id +"          "+ pw);

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import first.common.JDBCTemplate;
+import member.model.dao.MemberDAO;
 
 public class MemberService {
 	/*
@@ -20,12 +21,10 @@ public class MemberService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		try {
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		MemberDAO mdao = new MemberDAO();
+		result =  mdao.login(conn, id, pw);
 		
+		JDBCTemplate.close(conn);
 		
 		return result;
 	}
