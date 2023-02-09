@@ -42,17 +42,16 @@ public class JDBCTemplate {
 			prop.load(new BufferedReader(new FileReader(new File(currentPath+"driver.properties"))));
 			
 			
-			URL url =JDBCTemplate.class.getResource("");
-			System.out.println("url : " + url);
-			System.out.println(" 갯 리소스 =     "+JDBCTemplate.class.getResource(""));
-			System.out.println(" ./ =     "+JDBCTemplate.class.getResource("./"));
-			System.out.println(" ../ =     "+JDBCTemplate.class.getResource("../"));
-			
+//			URL url =JDBCTemplate.class.getResource("");
+//			System.out.println("url : " + url);
+//			System.out.println(" 갯 리소스 =     "+JDBCTemplate.class.getResource(""));
+//			System.out.println(" ./ =     "+JDBCTemplate.class.getResource("./"));
+//			System.out.println(" ../ =     "+JDBCTemplate.class.getResource("../"));
 			
 			System.out.println("1 : " +prop.getProperty("driver"));
 			
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","KH","KH");
+			con = DriverManager.getConnection(prop.getProperty("url"),prop.getProperty("user"),prop.getProperty("pwd"));
 			
 		} catch (ClassNotFoundException e) {
 			System.out.println("==== ojdbc.jar 가 없어요! ====");
