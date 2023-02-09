@@ -41,8 +41,6 @@ public class LoginServlet extends HttpServlet {
 		 * out.append("<h1><b>  추가  /</b></h1>");
 		 */
 		
-		JDBCTemplate.getConnection();
-		
 		//response.sendRedirect(request.getContextPath()+"/?a=aaa");
 		request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
 	}
@@ -62,9 +60,13 @@ public class LoginServlet extends HttpServlet {
 		System.out.println(result);
 		
 		if(result ==1) {
-			response.sendRedirect(request.getContextPath() + "/");
-			System.out.println(id +"          "+ pw);
+			request.setAttribute("msg", id+"님 로그인 완료");
+		}else if(result == -1){
+			request.setAttribute("msg", "로그인실패");
+		}else {
+			request.setAttribute("msg", "아이디 없음");
 		}
+		request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
 	}
 
 }

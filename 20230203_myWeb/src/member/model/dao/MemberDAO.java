@@ -1,6 +1,7 @@
 package member.model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,29 +11,53 @@ import first.common.JDBCTemplate;
 public class MemberDAO {
 	
 	public int login(Connection conn, String id, String pw) {
-		int result = 0;
+		int result = -1;
 		
-		String query = "select count(*) from test_member where id ="+id+"  and pw = "+pw;
+		String query = "select count(*) AS cnt from test_member where id ='"+id+"'  and passwd = '"+pw+"'";
+		String query1 = "select count(*) AS cnt from test_member where id =?  and passwd = ?";
 		
-			Statement stmt;
+		System.out.println(query);
+		
+			Statement stmt = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			ResultSet rs1 = null;
 			try {
 				stmt = conn.createStatement();
 				
 				
 				//selete 할때 사용
-				ResultSet rs = stmt.executeQuery(query);
+				rs = stmt.executeQuery(query);
 				
 				if(rs.next()) {
+				//result = rs.getInt("cnt");
 					
 				}
 				
+				pstmt = conn.prepareStatement(query1);
+				pstmt.setString(1, id);
+				pstmt.setString(2, pw);
 				
+				rs1 = pstmt.executeQuery();
 				
+				if(rs1.next()) {
+					result = rs1.getInt("cnt");	
+				}else {
+					result =0;
+				}
+
+
 				//insert update delete 할떄 사용
 				//stmt.executeUpdate(sql)
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
+			}finally {
+
+				JDBCTemplate.close(stmt);
+				JDBCTemplate.close(pstmt);
+				JDBCTemplate.close(rs);
+				JDBCTemplate.close(rs1);
 			}
 			
 
