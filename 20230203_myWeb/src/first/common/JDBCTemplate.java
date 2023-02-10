@@ -37,7 +37,9 @@ public class JDBCTemplate {
 		
 		//try ~ 문에서는 변수를 선언 하지 않는다.
 		try {
+			
 //			prop.load(new BufferedReader(new FileReader(new File("C:\\Users\\user1\\git\\NukNim2023\\20230203_myWeb\\src\\first\\common\\driver.properties"))));
+			
 			String currentPath = JDBCTemplate.class.getResource("").getPath();
 			prop.load(new BufferedReader(new FileReader(new File(currentPath+"driver.properties"))));
 			
@@ -50,7 +52,11 @@ public class JDBCTemplate {
 			
 			System.out.println("1 : " +prop.getProperty("driver"));
 			
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			//문자열 형태로 전달된 클래스를 JVM으로 로드해주는 기능
+			//Oracle JDBC 드라이버를 지정해 로드하여 DriverManager에 등록이 되도록 하는 코드
+			Class.forName(prop.getProperty("driver"));
+			
+			
 			con = DriverManager.getConnection(prop.getProperty("url"),prop.getProperty("user"),prop.getProperty("pwd"));
 			
 		} catch (ClassNotFoundException e) {
@@ -71,6 +77,9 @@ public class JDBCTemplate {
 				System.out.println("====== 연결 실패 ======123");
 			}
 		}
+		
+		
+		//DB counnecion 생성 반대 순서로 close
 		
 		
 		
