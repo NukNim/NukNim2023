@@ -17,8 +17,12 @@ public class BoardController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		BoardListService bls = new BoardListService();
 		List<BoardDto> blist = bls.boardList();
+		List<BoardDto> bnlist = bls.BoardNotiList();
+		List<BoardDto> anlist = bls.AllNotiList();
 		
 		req.setAttribute("blist", blist);
+		req.setAttribute("bnlist", bnlist);
+		req.setAttribute("anlist", anlist);
 		req.getRequestDispatcher("/WEB-INF/view/BoardList.jsp").forward(req, resp);
 	}
 	

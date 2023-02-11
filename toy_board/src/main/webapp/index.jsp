@@ -8,10 +8,15 @@
 <head>
 <meta charset="UTF-8">
 <title>메인</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 <body>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		location.href ="<%=request.getContextPath()%>/list"; 
+    });
+	</script>
 	
-	a메인창 확인
 	
 </body>
 </html>

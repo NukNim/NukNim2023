@@ -23,5 +23,25 @@ public class BoardListService {
 		return blist;
 		
 	}
+	public List<BoardDto> BoardNotiList(){
+		Connection conn = JdbcConnect.getConnection();
+		
+		List<BoardDto> blist = new BoardDao().BoardNotiList(conn);
+		
+		JdbcConnect.close(conn);
+		
+		return blist;
+		
+	}
+	public List<BoardDto> AllNotiList(){
+		Connection conn = JdbcConnect.getConnection();
+		
+		List<BoardDto> blist = new BoardDao().AllNotiList(conn);
+		
+		JdbcConnect.close(conn);
+		
+		return blist;
+		
+	}
 
 }
