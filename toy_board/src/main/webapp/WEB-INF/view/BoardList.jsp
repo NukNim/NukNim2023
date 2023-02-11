@@ -33,12 +33,13 @@
 			</thead>
 			<tbody>
 					<c:forEach var="anlist" items="${anlist}" >
-						<tr class="allNoti">
+						<tr class="allNoti" onclick="location.href = '<%=request.getContextPath()%>/view?id=${anlist.id}'">
 							<td class="no">${anlist.id}</td>
 							<td class="type">${anlist.categoryName}</td>
 							<td class="title">${anlist.title}</td>
 							<td class="author">${anlist.userId}</td>
 							<td class="createD">${anlist.createDate}</td>
+
 						</tr>
 					</c:forEach>
 					<c:forEach var="bnlist" items="${bnlist}" >

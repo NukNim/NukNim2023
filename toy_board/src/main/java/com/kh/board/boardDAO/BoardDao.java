@@ -23,6 +23,7 @@ public class BoardDao {
 		String query = "SELECT ID, TITLE ,CONTENT, USER_ID, USER_PW ,CREATE_DATE ,MODI_DATE ,DEL_FLAG ,CATEGORY_NAME "
 				+ "FROM BOARD b join CATEGORY c on b.CATEGORY =c.CATEGORY_ID"
 				+ " WHERE c.CATEGORY_ID != (60)"
+				+ " AND del_flag ='N'"
 				+ " ORDER BY ID DESC";
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -64,6 +65,7 @@ public class BoardDao {
 		String query = "SELECT ID, TITLE ,CONTENT, USER_ID, USER_PW ,CREATE_DATE ,MODI_DATE ,DEL_FLAG ,CATEGORY_NAME "
 				+ "FROM BOARD b join CATEGORY c on b.CATEGORY =c.CATEGORY_ID"
 				+ " WHERE c.CATEGORY_ID = 50"
+				+ " AND del_flag ='N'"
 				+ " ORDER BY ID DESC";
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -100,7 +102,7 @@ public class BoardDao {
 		List<BoardDto> anlist = new ArrayList<BoardDto>();
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
-		String query = "SELECT ID, TITLE ,CONTENT, USER_ID, USER_PW ,CREATE_DATE ,MODI_DATE ,DEL_FLAG ,CATEGORY_NAME FROM BOARD b join CATEGORY c on b.CATEGORY =c.CATEGORY_ID where c.CATEGORY_ID = 60 ORDER BY ID DESC";
+		String query = "SELECT ID, TITLE ,CONTENT, USER_ID, USER_PW ,CREATE_DATE ,MODI_DATE ,DEL_FLAG ,CATEGORY_NAME FROM BOARD b join CATEGORY c on b.CATEGORY =c.CATEGORY_ID where c.CATEGORY_ID = 60 and del_flag ='N' ORDER BY ID DESC";
 		try {
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
@@ -131,6 +133,43 @@ public class BoardDao {
 		}
 		
 		return anlist;
+	}
+	
+	public BoardDto selectView(Connection conn, int id) {
+		BoardDto result = new BoardDto();
+		
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		String query = "SELECT ID, TITLE ,CONTENT, USER_ID, USER_PW ,CREATE_DATE ,MODI_DATE ,DEL_FLAG ,CATEGORY_NAME \r\n"
+				+ "FROM BOARD b join CATEGORY c on b.CATEGORY =c.CATEGORY_ID\r\n"
+				+ " WHERE b.ID  = ?\r\n"
+				+ " AND del_flag ='N'";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result.setId(rs.getInt("id"));
+				result.setTitle(rs.getString("title"));
+				result.setContent(rs.getString("content"));
+				result.setUserId(rs.getString("user_id"));
+				result.setUserPw(rs.getString("user_pw"));
+				result.setDelFlag(rs.getString("del_flag"));
+				result.setCreateDate(rs.getDate("create_date"));
+				result.setModifyDate(rs.getDate("modi_date"));
+				result.setCategoryName(rs.getNString("category_name"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JdbcConnect.close(rs);
+			JdbcConnect.close(pstmt);	
+		}
+		
+		
+		return result;
 	}
 	
 	
