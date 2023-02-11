@@ -19,6 +19,24 @@
 		<span>게시판 상세 페이지</span>
 	</div>
 	
+	<div class = "boardViewTitle">
+		<h3>
+			<span>[${bview.categoryName}]</span>
+			<span>${bview.title}</span>
+		</h3>
+	</div>
+	<div class="boardViewinfo">
+		<span class="author">작성자 : ${bview.userId}</span> 
+		<span class="createDate">${bview.createDate}</span>
+	</div>
+	
+	<div class="boardContent">
+		<div class="board-inner">
+			<span>${bview.content}</span>
+		</div>
+	</div>
+	
+	
 	<div>
 		${bview }	
 	</div>

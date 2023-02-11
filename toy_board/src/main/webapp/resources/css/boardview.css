@@ -1,1 +1,31 @@
 @charset "UTF-8";
+
+.boardViewTitle{
+	margin: 50px;
+	margin-bottom : 0px;
+	font-size: 20px;
+	border-bottom: solid;
+}
+
+
+.boardViewinfo{
+	margin: 50px;
+	margin-top: 0px;
+	font-size : 12px;
+}
+
+.createDate{
+	float: right;
+}
+
+.boardContent{
+	border: solid;
+	margin: 50px;
+
+}
+
+.board-inner{
+	margin: 50px;
+	width: 100%;
+	height: 400px;
+	}
