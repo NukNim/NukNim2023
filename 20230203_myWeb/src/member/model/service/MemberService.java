@@ -2,7 +2,9 @@ package member.model.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
+import emp.member.vo.MemberVo;
 import first.common.JDBCTemplate;
 import member.model.dao.MemberDAO;
 
@@ -27,5 +29,10 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		
 		return result;
+	}
+
+	public List<MemberVo> selectMemberList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
