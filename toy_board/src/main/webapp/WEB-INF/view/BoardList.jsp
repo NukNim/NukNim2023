@@ -33,10 +33,14 @@
 			</thead>
 			<tbody>
 					<c:forEach var="anlist" items="${anlist}" >
-						<tr class="allNoti" onclick="location.href = '<%=request.getContextPath()%>/view?id=${anlist.id}'">
+						<tr class="allNoti">
 							<td class="no">${anlist.id}</td>
 							<td class="type">${anlist.categoryName}</td>
-							<td class="title">${anlist.title}</td>
+							<td class="title">
+								<a href = "<%=request.getContextPath()%>/view?id=${anlist.id}">
+									${anlist.title}
+								</a>
+							</td>
 							<td class="author">${anlist.userId}</td>
 							<td class="createD">${anlist.createDate}</td>
 
@@ -46,7 +50,11 @@
 						<tr class="Noti">
 							<td class="no">${bnlist.id}</td>
 							<td class="type">${bnlist.categoryName}</td>
-							<td class="title">${bnlist.title}</td>
+							<td class="title">
+								<a href = "<%=request.getContextPath()%>/view?id=${bnlist.id}">
+									${bnlist.title}
+								</a>
+							</td>
 							<td class="author">${bnlist.userId}</td>
 							<td class="createD">${bnlist.createDate}</td>
 						</tr>
@@ -55,7 +63,11 @@
 						<tr>
 							<td class="no">${blist.id}</td>
 							<td class="type">${blist.categoryName}</td>
-							<td class="title">${blist.title}</td>
+							<td class="title">
+							<a href = "<%=request.getContextPath()%>/view?id=${blist.id}">
+									${blist.title}
+								</a>
+							</td>
 							<td class="author">${blist.userId}</td>
 							<td class="createD">${blist.createDate}</td>
 						</tr>

@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>게시판 상세</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script type="text/javascript" src="./resources/js/boardview.js"></script>
 <link rel="stylesheet" type="text/css" href="./resources/css/boardview.css">
 <link rel="stylesheet" type="text/css" href="./resources/css/boardList.css">
 
@@ -38,7 +39,7 @@
 	
 	
 	<div>
-		${bview }	
+		<button type="button" onclick="intoList()" class="intoList">목록으로</button>	
 	</div>
 	
 
