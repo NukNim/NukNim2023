@@ -15,7 +15,7 @@ import member.model.service.MemberService;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/loginurl")
+@WebServlet("/loginurl1")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -61,6 +61,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if(result ==1) {
 			request.setAttribute("msg", id+"님 로그인 완료");
+			
 		}else if(result == -1){
 			request.setAttribute("msg", "로그인실패");
 		}else {
