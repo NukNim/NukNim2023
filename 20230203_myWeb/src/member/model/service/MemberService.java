@@ -1,6 +1,7 @@
 package member.model.service;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -34,5 +35,15 @@ public class MemberService {
 	public List<MemberVo> selectMemberList() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public int DuplicateId(String id) {
+		int result = 0;
+		
+		Connection conn = JDBCTemplate.getConnection();
+		MemberDAO mdao = new MemberDAO();
+		result =  mdao.DupCheck(conn,id);
+		
+		return result;
 	}
 }

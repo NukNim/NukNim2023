@@ -66,4 +66,33 @@ public class MemberDAO {
 		return result;
 	}
 
+	public int DupCheck(Connection conn, String id) {
+		int result = -1;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "select count(*) AS cnt from test_member where id =?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, id);
+			
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt("cnt");	
+			}else {
+				result =0;
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+		
+		return result;
+	}
+
 }

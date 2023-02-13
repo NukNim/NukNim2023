@@ -2,12 +2,15 @@ package member.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import member.model.service.MemberService;
 
 /**
  * Servlet implementation class DupIdCheckServlet
@@ -36,7 +39,7 @@ public class DupIdCheckServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		System.out.println("전달 받은 데이터 " + id);
 		//2. DB 갔다오기
-//		/new MemberService()
+		int dupCheck = new MemberService().DuplicateId(id);
 		//3. 결과 데이터 전달 
 		PrintWriter out = response.getWriter();
 		out.append("응답할데이터");
