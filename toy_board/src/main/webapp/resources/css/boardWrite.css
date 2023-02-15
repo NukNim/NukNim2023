@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+
+.sub{
+	font-weight: bold;
+	text-align: center;
+	padding: .75rem;
+}
+
+.boardtitle{
+	margin: .55rem;
+	margin-left: 1rem;
+}
+
+.boardid, .boardpw{
+	width: 100px;
+	margin-bottom: 20px;
+}
+
+.bContext{
+	width : 94%;
+	margin: auto;
+	justify-content: center;
+}

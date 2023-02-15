@@ -15,10 +15,8 @@
 
 </head>
 <body>
+<%@include file="/WEB-INF/view/extra/header.jsp" %>
 
-	<div id="mainTitle" class="" name="">
-		<span>게시판 상세 페이지</span>
-	</div>
 	
 	<div class = "boardViewTitle">
 		<h3>
@@ -41,7 +39,9 @@
 	<div>
 		<button type="button" onclick="intoList()" class="intoList">목록으로</button>	
 	</div>
+	<script type="text/javascript">
 	
+	</script>
 
 </body>
 </html>

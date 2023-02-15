@@ -3,7 +3,11 @@
  */
  
  function intoList(){
-	window.history.back();
+	location.href="list"
 }
- 
+
+function gotoWrite(){
+	location.href="write"
+}
+
  

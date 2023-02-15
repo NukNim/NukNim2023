@@ -10,13 +10,13 @@
 <meta charset="UTF-8">
 <title>게시판 제목</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script type="text/javascript" src="./resources/js/boardview.js"></script>
+<link rel="stylesheet" type="text/css" href="./resources/css/boardview.css">
 <link rel="stylesheet" type="text/css" href="./resources/css/boardList.css">
 
 </head>
 <body>
-	<div id="mainTitle" class="" name="">
-		<span>게시판 제목</span>
-	</div>
+<%@include file="/WEB-INF/view/extra/header.jsp" %>
 	<div>
 		
 	</div>
@@ -75,7 +75,7 @@
 			</tbody>
 		</table>
 <hr>		
-
+	<button class="btn bwrite" type="button" onclick="gotoWrite()">글작성하기</button>
 		
 		
 		

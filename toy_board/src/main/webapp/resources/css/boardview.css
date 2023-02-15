@@ -35,3 +35,18 @@
 	width: 100px;
 	height: 30px;
 }
+
+.btn{
+	margin: 10px;
+	border-radius: 10px;
+	border:none;
+	cursor: pointer;
+	background: gray;
+	color: white;
+	width : 80px;
+	height: 24px;
+}
+.bwrite{
+	 position:relative;
+	 left: 80%;
+}
