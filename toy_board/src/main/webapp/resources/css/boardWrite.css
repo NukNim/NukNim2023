@@ -19,6 +19,11 @@
 
 .bContext{
 	width : 94%;
+	height : 500px;
 	margin: auto;
 	justify-content: center;
+}
+.ck-editor__editable {
+    min-height: 400px;
+    max-height: 400px;
 }

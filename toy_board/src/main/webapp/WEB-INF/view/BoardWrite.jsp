@@ -29,28 +29,28 @@
 	</form>
 	
 </div>
-                <script>
-                        ClassicEditor
-                                .create( document.querySelector( '#editor' ), {
-                                	toolbar: {
-                                		items: [
-                                			'bold',
-                                			'italic',
-                                			'|',
-                                			'outdent',
-                                			'indent',
-                                			'|',
-                                			'blockQuote',
-                                			'undo',
-                                			'redo'
-                                		]
-                                	},
-                                	language: 'ko'
-                                })
-                                .catch( error => {
-                                        console.error( error );
-                                } );
-                </script>
+      <script>
+              ClassicEditor
+                      .create( document.querySelector( '#editor' ), {
+                      	toolbar: {
+                      		items: [
+                      			'bold',
+                      			'italic',
+                      			'|',
+                      			'outdent',
+                      			'indent',
+                      			'|',
+                      			'blockQuote',
+                      			'undo',
+                      			'redo'
+                      		]
+                      	},
+                      	language: 'ko'
+                      })
+                      .catch( error => {
+                              console.error( error );
+                      } );
+      </script>
 
 </body>
 </html>
