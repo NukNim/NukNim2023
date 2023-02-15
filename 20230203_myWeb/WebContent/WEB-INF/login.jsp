@@ -15,7 +15,10 @@
 			url : "<%=request.getContextPath() %>/dupid.lo",
 			type : "post",
 			async : false,
-			data : {id : $("input[type = text]").first().val()},
+		    /* dataType : 'json', 받을 결과데이터의 자료형 
+		    contentType : 'application/json; charset:utf-8', 
+		    data : JSON.stringify(test), JSON 타입 데이터 입력*/
+			data : {id : $("input[type = text]").first().val()},		
 			sucess : function(result){
 				console.log(result);
 				if(result == "1"){
