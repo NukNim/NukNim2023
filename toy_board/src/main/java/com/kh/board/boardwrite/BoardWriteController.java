@@ -29,15 +29,8 @@ public class BoardWriteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardDto dto = new BoardDto();
-		BoardDto bdto = new BoardDto();
 		dto = (BoardDto)request.getSession().getAttribute("userinfo");
-		if(dto != null) {
-			bdto.setUserId(dto.getUserId());
-			bdto.setUserPw(dto.getUserPw());
-			
-		}
 		
-		request.getSession().setAttribute("userinfo", bdto);
 		request.getRequestDispatcher("/WEB-INF/view/BoardWrite.jsp").forward(request, response);
 		
 	}
@@ -47,20 +40,33 @@ public class BoardWriteController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardDto dto = new BoardDto();
+		BoardDto sdto = new BoardDto();
 		request.setCharacterEncoding("UTF-8");
 		
 		String id = request.getParameter("boardid");
 		String bTitle = request.getParameter("boardtitle");
 		String bContent = request.getParameter("bContext");
 		String pw = request.getParameter("boardpw");
+
+		dto.setUserId(id);
+		dto.setUserPw(pw);
+		dto.setTitle(bTitle);
+		dto.setContent(bContent);
 		
-		System.out.println(bTitle);
-		System.out.println(bContent);
+		BoardWriteService bws = new BoardWriteService();
 		
-//		dto.setId(Integer.parseInt(id));
-//		dto.setUserPw(pw);
-//		dto.setTitle(bTitle);
+		int result = bws.insertBoard(dto);
 		
+		sdto.setUserId(id);
+		sdto.setUserPw(pw);
+		
+		if(result == 1) {
+			request.getSession().setAttribute("userinfo", sdto);
+			response.sendRedirect(request.getContextPath()+"/list");
+		}else {
+			response.sendRedirect(request.getContextPath()+"/");
+		}
+
 	}
 
 }

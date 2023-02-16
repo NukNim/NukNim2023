@@ -172,7 +172,29 @@ public class BoardDao {
 		return result;
 	}
 	
-	
+	public int insertBoard(Connection conn, BoardDto dto) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "INSERT INTO BOARD (ID, TITLE, CONTENT, USER_ID, USER_PW, CREATE_DATE, DEL_FLAG, CATEGORY)";
+				query+= " VALUES (BOARD_SEQ.NEXTVAL, ?, ?,? , ?, sysdate, 'N', 10)";
+				
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, dto.getTitle());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getUserId());
+			pstmt.setString(4, dto.getUserPw());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JdbcConnect.close(pstmt);
+		}
+
+		return result;
+	}
 
 	
 }

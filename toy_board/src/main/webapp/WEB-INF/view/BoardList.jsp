@@ -11,14 +11,13 @@
 <title>게시판 제목</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script type="text/javascript" src="./resources/js/boardview.js"></script>
-<link rel="stylesheet" type="text/css" href="./resources/css/boardview.css">
-<link rel="stylesheet" type="text/css" href="./resources/css/boardList.css">
+<link rel="stylesheet" type="text/css" href="./resources/css/boardview.css?ver=1">
+<link rel="stylesheet" type="text/css" href="./resources/css/boardList.css?ver=1">
 
 </head>
 <body>
 <%@include file="/WEB-INF/view/extra/header.jsp" %>
 	<div>
-		
 	</div>
 	<div>
 		<table id="blist" class="" name="">
