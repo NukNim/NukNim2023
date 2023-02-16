@@ -34,10 +34,10 @@ public class BoardWriteController extends HttpServlet {
 		if(dto != null) {
 			bdto.setUserId(dto.getUserId());
 			bdto.setUserPw(dto.getUserPw());
-			request.getSession().setAttribute("userinfo", bdto);
+			
 		}
 		
-		
+		request.getSession().setAttribute("userinfo", bdto);
 		request.getRequestDispatcher("/WEB-INF/view/BoardWrite.jsp").forward(request, response);
 		
 	}
@@ -46,6 +46,20 @@ public class BoardWriteController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		BoardDto dto = new BoardDto();
+		request.setCharacterEncoding("UTF-8");
+		
+		String id = request.getParameter("boardid");
+		String bTitle = request.getParameter("boardtitle");
+		String bContent = request.getParameter("bContext");
+		String pw = request.getParameter("boardpw");
+		
+		System.out.println(bTitle);
+		System.out.println(bContent);
+		
+//		dto.setId(Integer.parseInt(id));
+//		dto.setUserPw(pw);
+//		dto.setTitle(bTitle);
 		
 	}
 
