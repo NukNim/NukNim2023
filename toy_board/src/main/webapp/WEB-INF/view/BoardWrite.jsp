@@ -3,16 +3,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>글 작성 페이지</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script>
 <script type="text/javascript" src="./resources/js/boardview.js"></script>
 <link href="./resources/css/boardWrite.css?ver=1.1" rel="stylesheet" type="text/css" >
 <link href="./resources/css/boardList.css?ver=1.1" rel="stylesheet" type="text/css" >
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>글 작성 페이지</title>
 </head>
 <body>
 
@@ -21,16 +21,26 @@
 <div>
 	<form action="write" method="post">
 	<span class="sub">제목</span><input type="text" id = "boardtitle" class="boardtitle" name="boardtitle"><br>
-	<c:choose>
-		<c:when test="${userinfo.userId eq null }">
-			<span class="sub">아이디</span><input type="text" id = "boardid" class="boardid" name="boardid" placeholder="6자 이내로 ">
-			<span class="sub">비밀번호</span><input type="password" id = "boardpw" class="boardpw" name="boardpw" placeholder="6자 이내로 ">
-		</c:when>
-		<c:otherwise>
-			<span class="sub">아이디</span><input type="text" id = "boardid" class="boardid" name="boardid" placeholder="6자 이내로" value="${userinfo.userId}">
-			<span class="sub">비밀번호</span><input type="password" id = "boardpw" class="boardpw" name="boardpw" placeholder="6자 이내로 " value="${userinfo.userPw}">
-		</c:otherwise>
-	</c:choose>
+	<div>
+		<c:choose>
+			<c:when test="${userinfo.userId eq null }">
+				<span class="sub">아이디</span><input type="text" id = "boardid" class="boardid" name="boardid" placeholder="6자 이내로 ">
+				<span class="sub">비밀번호</span><input type="password" id = "boardpw" class="boardpw" name="boardpw" placeholder="6자 이내로 ">
+			</c:when>
+			<c:otherwise>
+				<span class="sub">아이디</span><input type="text" id = "boardid" class="boardid" name="boardid" placeholder="6자 이내로" value="${userinfo.userId}">
+				<span class="sub">비밀번호</span><input type="password" id = "boardpw" class="boardpw" name="boardpw" placeholder="6자 이내로 " value="${userinfo.userPw}">
+			</c:otherwise>
+		</c:choose>
+		<span id="selectName" class="selectName"">
+			<label>카테고리 : </label>
+			<select id = "cateSelect" class="cateSelect" name="cateSelect">
+				<c:forEach var="catelist" items="${calist}">
+					<option value="${catelist.categoryId}">${catelist.categoryName}</option>
+				</c:forEach>			
+			</select>
+		</span>
+	</div>
 		<div class="bContext">
 			<textarea id="editor" class="editor" name="bContext" placeholder="내용을 입력하세요">
 			</textarea>

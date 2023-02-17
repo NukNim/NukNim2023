@@ -14,7 +14,14 @@ public class BoardDto {
 	private 	String	delFlag;
 	private 	int	categoryId;
 	private 	String categoryName;
+	private 	int viewCnt;
 	
+	public int getViewCnt() {
+		return viewCnt;
+	}
+	public void setViewCnt(int viewCnt) {
+		this.viewCnt = viewCnt;
+	}
 	public String getCategoryName() {
 		return categoryName;
 	}

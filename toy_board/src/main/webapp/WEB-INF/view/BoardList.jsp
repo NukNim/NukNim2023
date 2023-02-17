@@ -1,9 +1,11 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<link rel="stylesheet" type="text/css" href="./resources/css/boardview.css?ver=1">
+<link rel="stylesheet" type="text/css" href="./resources/css/boardList.css?ver=1">
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +13,6 @@
 <title>게시판 제목</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script type="text/javascript" src="./resources/js/boardview.js"></script>
-<link rel="stylesheet" type="text/css" href="./resources/css/boardview.css?ver=1">
-<link rel="stylesheet" type="text/css" href="./resources/css/boardList.css?ver=1">
 
 </head>
 <body>
@@ -28,6 +28,7 @@
 					<th class="title">제목</th>
 					<th class="author">글쓴이</th>
 					<th class="createD">등록 시간</th>
+					<th class="viewCnt">조회수</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -41,7 +42,11 @@
 								</a>
 							</td>
 							<td class="author">${anlist.userId}</td>
-							<td class="createD">${anlist.createDate}</td>
+							<td class="createD">
+								<fmt:formatDate value="${anlist.createDate}" pattern="MM.dd / kk:mm" type="date"/>
+							</td>
+							<td class="viewCnt">${anlist.viewCnt}</td>
+							
 
 						</tr>
 					</c:forEach>
@@ -55,7 +60,10 @@
 								</a>
 							</td>
 							<td class="author">${bnlist.userId}</td>
-							<td class="createD">${bnlist.createDate}</td>
+							<td class="createD">
+								<fmt:formatDate value="${bnlist.createDate}" pattern="MM.dd / kk:mm" type="date"/>
+							</td>
+							<td class="viewCnt">${bnlist.viewCnt}</td>
 						</tr>
 					</c:forEach>
 					<c:forEach var="blist" items="${blist}" >
@@ -68,7 +76,10 @@
 								</a>
 							</td>
 							<td class="author">${blist.userId}</td>
-							<td class="createD">${blist.createDate}</td>
+							<td class="createD">
+								<fmt:formatDate value="${blist.createDate}" pattern="MM.dd / kk:mm" type="date"/>
+							</td>
+							<td class="viewCnt">${blist.viewCnt}</td>
 						</tr>
 					</c:forEach>
 			</tbody>
